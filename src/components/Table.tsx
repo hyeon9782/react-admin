@@ -1,22 +1,28 @@
 import React from "react";
 type Props = {
-  thead: [];
-  tbody: [][];
+  thead: string[];
+  tbody: string[][];
 };
 const Table = ({ thead, tbody }: Props) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>이름</th>
-          <th>주소</th>
+          {thead.map((th) => (
+            <th>{th}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>하다</td>
-          <td>서울특별시 강북구 수유동</td>
-        </tr>
+        {tbody.map((tr) => {
+          return (
+            <tr>
+              {tr.map((td) => {
+                return <td>{td}</td>;
+              })}
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
